@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  master:
+    image: nginx:1.17
+    volumes:
+    - ./ssl:/ssl:ro
+    - ./master.conf:/etc/nginx/nginx.conf:ro
+    ports:
+    - 4443:4443
+  slave:
+    image: nginx:1.17
+    volumes:
+    - ./ssl:/ssl:ro
+    - ./slave.conf:/etc/nginx/nginx.conf:ro
+    ports:
+    - 4444:80

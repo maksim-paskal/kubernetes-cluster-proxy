@@ -1,0 +1,24 @@
+#!/bin/sh
+set -ex
+
+rm -rf ssl
+mkdir ssl
+mkdir ssl/db
+mkdir ssl/db/certs
+mkdir ssl/db/newcerts
+touch ssl/db/index.txt
+echo "01" > ssl/db/serial
+
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout ssl/server.key -out ssl/server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=*.golbal"
+
+openssl req -new -newkey rsa:2048 -nodes -keyout ssl/ca.key -x509 -days 3650 \
+-subj "/C=GB/ST=London/L=London/O=EXAMPLE/OU=CRM/CN=cluster.global/emailAddress=crm@cluster.global" \
+-out ssl/ca.crt
+
+openssl req -new -newkey rsa:2048 -nodes -keyout ssl/client01.key \
+-subj "/C=GB/ST=London/L=London/O=EXAMPLE/OU=CRM/CN=cluster.global/emailAddress=user@cluster.global" \
+-out ssl/client01.csr
+
+openssl x509 -req -days 3650 -in ssl/client01.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 01 -out ssl/client01.crt
+
+docker-compose up
