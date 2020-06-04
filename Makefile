@@ -1,3 +1,8 @@
+testCerts:
+	openssl rsa -check -in ssl/ca.key
+	openssl x509 -text -noout -in ssl/ca.crt
+	openssl rsa -check -in ssl/client01.key
+	openssl x509 -text -noout -in ssl/client01.crt
 init:
 	@./init.ssl
 test:
