@@ -1,0 +1,159 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  server.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDZDCCAkwCCQCBie/idv3RGTANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJH
+    QjEPMA0GA1UECAwGTG9uZG9uMQ8wDQYDVQQHDAZMb25kb24xGDAWBgNVBAoMD0ds
+    b2JhbCBTZWN1cml0eTEWMBQGA1UECwwNSVQgRGVwYXJ0bWVudDERMA8GA1UEAwwI
+    Ki5nb2xiYWwwHhcNMjAwNjAzMTQyNDEwWhcNMzAwNjAxMTQyNDEwWjB0MQswCQYD
+    VQQGEwJHQjEPMA0GA1UECAwGTG9uZG9uMQ8wDQYDVQQHDAZMb25kb24xGDAWBgNV
+    BAoMD0dsb2JhbCBTZWN1cml0eTEWMBQGA1UECwwNSVQgRGVwYXJ0bWVudDERMA8G
+    A1UEAwwIKi5nb2xiYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCl
+    801gIg+JGmnyFUgyz0tNRJGBq9yFIE9fqE6TPQbkuJTLpvS3nfU+QEfYfSBkZHGk
+    7LcEi2CmU6dQWwNFtT+h6Nb9eMYgxA8Xm/oCol1S+vlWYeNyJGejwZ9F9a9v7eYe
+    jEYLuStubRws6wDSYsmJlJTIO1QJDkp7Pa7jcDfQVbz7JnVwjiIHsJTxdl1QBoTg
+    VSD3VhsLaF1TxEu7/1tHQ4m5+X0hubARmJK/gfouXSMJoi2oj+vsQzDtRA+zPKV9
+    WZJt0MVsSOVB4G9HTOp+H5KWCumbrUUkl/WA0+Mbb6j+yFk+nUdwLNA7VoXXlIuW
+    EditftfOVF6lr5Nu0pMzAgMBAAEwDQYJKoZIhvcNAQELBQADggEBADw72IX5MQ3e
+    VMqAFuYeIWoIZn/YsGTIDdJdewfxu84Xm3yCQmhf3VkESuPclpbFD8YFnZ8GUD22
+    hIpOlQVh7LdDkpLmpgOghn/Xqju4nUPVswS8a03rnHKoEGy0b4acSBgL6DLXvNnC
+    MEy2vLcD0iVG/ELNajLAE4goInR84RW8yfY35eUK//1VzCnfb5y6qHHVuLxF7Oeg
+    BtRv02smpwUisSjmRTDQKFWjz2Qai5FohAttN/vD0dnf7VfgTDQvkjgdKEh+6bop
+    wLPk9gX3P+QnGPqyRRl7gZ2dX/2/4nMfjRAdB/reKPWf0R0+u+2WCyll6fnXjbAW
+    Hvg5ohpo8pY=
+    -----END CERTIFICATE-----
+  server.key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCl801gIg+JGmny
+    FUgyz0tNRJGBq9yFIE9fqE6TPQbkuJTLpvS3nfU+QEfYfSBkZHGk7LcEi2CmU6dQ
+    WwNFtT+h6Nb9eMYgxA8Xm/oCol1S+vlWYeNyJGejwZ9F9a9v7eYejEYLuStubRws
+    6wDSYsmJlJTIO1QJDkp7Pa7jcDfQVbz7JnVwjiIHsJTxdl1QBoTgVSD3VhsLaF1T
+    xEu7/1tHQ4m5+X0hubARmJK/gfouXSMJoi2oj+vsQzDtRA+zPKV9WZJt0MVsSOVB
+    4G9HTOp+H5KWCumbrUUkl/WA0+Mbb6j+yFk+nUdwLNA7VoXXlIuWEditftfOVF6l
+    r5Nu0pMzAgMBAAECggEAAW2amN0yLQfhKYgtWuKVz1BrwCXue+bPSA92vaWkzYsZ
+    HLePG5VsauC6vY42HScQI082M//PER9fLT3bRVpN9eK/FudXLSkCyD07ZZJoIzKt
+    uqSVBIJzseEUsdFvdRMjC9hBMhCh4w1lVK2hEC5xdZGlxiNckcdhtLXPL33jvRM8
+    RNgfqq3YVeSkBwAsjb7JgAwogwBQGngi+JgcXTCVSp2jqKC8VmSiCOeeiBl571ki
+    9yuHdUrBDHr/wJQ2vyqADzGEoxxs1wLZidCdJEDtRXjP/GoVBfwHg+4E+ZYxBUxs
+    Lnt/hj2ynVi0Z/2xwi0jvNw+qx4KUiNBvau6JDONAQKBgQDQzFxZGwpAE7UP8Yim
+    kvbxI/M+KAP/GUZKl3/coqS99H2yQcyG2xpzSf/l4367q/dkAGArSXQKKbm54mr+
+    ioPkvdQZ4ANhKdwQR8O8WVAiH9LNfrBbzjqrHLxdeMY4RsC0A26MeMgJy8AfI2f4
+    9Z5Wj14gi07dH1/PIF1W2uyH0wKBgQDLdzxDAU+ta16BiAHjQeYpJO8/yX/n2JsQ
+    lo5wUwX4d5H479OPLpQmS2J2hNwxbQgZrVhrTcOro6ZotYerxEwrGZXjY4+u9H69
+    Eo29bfTT/SCInpXQ8xj01FMDVK/jWJE8SZEsNdh7zn4NX5o9DglPWjpJq9n+O9sy
+    gQYRCSULIQKBgQCtUCSLdg1xGKqfXE6gbbb6fGvIuTBwDAuzmMNyYbK7VfkMAOAD
+    RFVVQyRdLxOgNeL4p/MrmyHt2aqnaBCFznYiZYtsGuzTNwrKnLcVXVFNsfqpxjIf
+    UjSSmhykvb5TMi98fKjDgvIQZ4bGkf4YwdA3a3OnMds5YnSFmgjAMqJJLwKBgByI
+    yUvAWFNC1osl7tXXPRcSFfeFI8n5B64o3ysDibfR1QfrYmkXKDHCqrliYpsP5m3r
+    cJYD3ugoWEMhCjjdm60DtpCgOttXcJrFillBnW9JdZGTZAFcxmg3irjR3KTum9ev
+    nYtstcKPMABiIvhjCo01Yy1Hy5eq/0+y5o3nEWnhAoGAQfGXC5caLI81s6Dxkpn0
+    4uNCXWLFNFflflspcKriWKV0uOPWOv9R2PANVZ+BGKc4dZXV7mFza4rujdPTNSh9
+    uX5Djmx3opSF4FNb7Md6nAbHt4PxwsQF/LgSJY76MjbAd/od93elZFH4AxrAwxcV
+    jtMaLpTCg0ZGzhnE7ksI/FI=
+    -----END PRIVATE KEY-----
+  ca.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDlDCCAnwCCQCwngZ5DXd9PTANBgkqhkiG9w0BAQsFADCBizELMAkGA1UEBhMC
+    R0IxDzANBgNVBAgMBkxvbmRvbjEPMA0GA1UEBwwGTG9uZG9uMRAwDgYDVQQKDAdF
+    WEFNUExFMQwwCgYDVQQLDANDUk0xFzAVBgNVBAMMDmNsdXN0ZXIuZ2xvYmFsMSEw
+    HwYJKoZIhvcNAQkBFhJjcm1AY2x1c3Rlci5nbG9iYWwwHhcNMjAwNjAzMTQyNDEw
+    WhcNMzAwNjAxMTQyNDEwWjCBizELMAkGA1UEBhMCR0IxDzANBgNVBAgMBkxvbmRv
+    bjEPMA0GA1UEBwwGTG9uZG9uMRAwDgYDVQQKDAdFWEFNUExFMQwwCgYDVQQLDAND
+    Uk0xFzAVBgNVBAMMDmNsdXN0ZXIuZ2xvYmFsMSEwHwYJKoZIhvcNAQkBFhJjcm1A
+    Y2x1c3Rlci5nbG9iYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDM
+    G7tYumwty5q7Iflb1lU2rkm/ZxCrSkyE746nrKJDVs+n+6csTXnkLqAs42NzIwBa
+    0zg0EWuamUDQvWFBGgPaNFPbAu1y/Klv7EzV9YVuL23ouJS2Ktfj9HzszFmilGre
+    yCQnHsHTDMrRpM+lLooHoYFnj9Zzy/zuBEwO3ttgsx68oyXQcE71sfBvAAFGn3r7
+    +tHNN2yZYJrNbUc3NaxetySza2meiagfYCaXz/HfMZMFMNEt5txGt6raFzGhcyC8
+    DfEoqsJEOuJdY+UgLjMgzxuPXINiinUJB3c+PCLvdxOTmA95XqhahQZlVBK63rFR
+    cJgMg21lAtgoAGefzOXtAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAKjrlas9W2Do
+    GQM14Q5b6mNwk0HNPRuGxmhhoqbvhW4GeCjnmaO1UGV1v9Jq7G5IHcrdiCq/ADcq
+    b9eTB7a8quUi95gJ/qlOi4uUB9KGx8fgK2dJtV/8bHlD/vqTBBErLRI+VlU5IrDJ
+    l6g2lI0QHVLxTW4OrUYr6npygZTXSeCeG0D5G1LF82pEf9sVM6Uf+copB4ncsGrs
+    24dag/D5rzhVdrAQuPdRnWewBL6OCmlmqGWQNNm4/VGk8muqmQaA+Y1LNeH7ObKk
+    icDHfdTYhTPlcGfn3oNYCxVODICJ/TP0qiUzY2ylfHmd7vnsEAJ3+IWwMDvwrY44
+    sh2dYOZ7rAA=
+    -----END CERTIFICATE-----
+  nginx.conf: |
+    user nginx;
+    worker_processes  auto;
+    events {
+      worker_connections  10240;
+    }
+    stream {
+      log_format basic '$remote_addr [$time_local] '
+      '$protocol $status $bytes_sent $bytes_received '
+      '$session_time "$upstream_addr" '
+      '"$upstream_bytes_sent" "$upstream_bytes_received" "$upstream_connect_time"';
+
+      access_log /var/log/nginx/access.log basic;
+      error_log /var/log/nginx/error.log error;
+
+      ssl_certificate /etc/nginx/server.crt;
+      ssl_certificate_key /etc/nginx/server.key;
+
+      ssl_client_certificate /etc/nginx/ca.crt;
+      ssl_verify_client on;
+
+      server {
+        listen 30001 ssl;
+        proxy_pass kubernetes.default.svc.cluster.local:443;
+        proxy_ssl  on;
+      }
+
+      server {
+        listen 30002 ssl;
+        proxy_pass paket.paket-main-pp.svc.cluster.local:8001;
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-proxy
+spec:
+  selector:
+    matchLabels:
+      app: nginx-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-proxy
+        version: v6
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17.2
+        volumeMounts:
+        - mountPath: /etc/nginx
+          readOnly: true
+          name: nginx-config
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-proxy
+  labels:
+    app: nginx-proxy
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+spec:
+  type: LoadBalancer
+  #externalTrafficPolicy: Local
+  ports:
+  - name: proxy01
+    port: 30001
+    protocol: TCP
+  - name: proxy02
+    port: 30002
+    protocol: TCP
+  selector:
+    app: nginx-proxy

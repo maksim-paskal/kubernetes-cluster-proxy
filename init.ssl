@@ -20,5 +20,3 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl/client01.key \
 -out ssl/client01.csr
 
 openssl x509 -req -days 3650 -in ssl/client01.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 01 -out ssl/client01.crt
-
-docker-compose up
