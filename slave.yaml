@@ -126,7 +126,6 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
 spec:
   type: ClusterIP
-  #externalTrafficPolicy: Local
   ports:
   - name: proxy
     port: 80
