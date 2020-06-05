@@ -1,3 +1,9 @@
+#
+# EDITOR=nano kubectl -n kube-system edit cm coredns
+# rewrite stop name regex .*\.global nginx-proxy.default.svc.cluster.local
+# 
+# test
+# curl https443.kubernetes.default.svc.cluster.local.global
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -65,12 +71,13 @@ data:
     error_log /var/log/nginx/error.log error;
 
     http {
-      proxy_ssl_certificate         /ssl/client01.crt;
-      proxy_ssl_certificate_key     /ssl/client01.key;
+      proxy_ssl_certificate         /etc/nginx/client01.crt;
+      proxy_ssl_certificate_key     /etc/nginx/client01.key;
 
       map $remote_addr $lb { 
         default aba859c73ec444e97876b7f7b9af975a-2ed373467ecf9fca.elb.us-east-1.amazonaws.com;
       }
+
       resolver 169.254.20.10 valid=30s ipv6=off;
 
       server {
@@ -95,7 +102,7 @@ spec:
     metadata:
       labels:
         app: nginx-proxy
-        version: v1
+        version: v2
     spec:
       containers:
       - name: nginx
