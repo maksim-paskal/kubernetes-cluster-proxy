@@ -6,8 +6,8 @@ testCerts:
 init:
 	@./init.ssl
 testLocal:
-	curl localhost:4444?test
-	curl localhost:4445?test
+	curl -H "Host: http80.test.global" localhost:4444?test
+	curl -H "Host: https443.test-ssl.global" localhost:4444?test
 test:
 	curl -k --key ssl/client01.key --cert ssl/client01.crt https://aba859c73ec444e97876b7f7b9af975a-2ed373467ecf9fca.elb.us-east-1.amazonaws.com:30001
 deploy:
