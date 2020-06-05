@@ -102,7 +102,7 @@ spec:
     metadata:
       labels:
         app: nginx-proxy
-        version: v2
+        version: v3
     spec:
       containers:
       - name: nginx
