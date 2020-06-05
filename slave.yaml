@@ -61,33 +61,24 @@ data:
     events {
       worker_connections  10240;
     }
-    stream {
-      log_format basic '$remote_addr [$time_local] '
-      '$protocol $status $bytes_sent $bytes_received '
-      '$session_time "$upstream_addr" '
-      '"$upstream_bytes_sent" "$upstream_bytes_received" "$upstream_connect_time"';
 
-      access_log /var/log/nginx/access.log basic;
-      error_log /var/log/nginx/error.log error;
+    error_log /var/log/nginx/error.log error;
 
-      proxy_ssl_certificate         /etc/nginx/client01.crt;
-      proxy_ssl_certificate_key     /etc/nginx/client01.key;
-
-      proxy_ssl  on;
+    http {
+      proxy_ssl_certificate         /ssl/client01.crt;
+      proxy_ssl_certificate_key     /ssl/client01.key;
 
       map $remote_addr $lb { 
         default aba859c73ec444e97876b7f7b9af975a-2ed373467ecf9fca.elb.us-east-1.amazonaws.com;
       }
-      resolver 10.100.0.10 valid=30s ipv6=off;
-      
-      server {
-        listen 80;
-        proxy_pass $lb:30001;
-      }
+      resolver 169.254.20.10 valid=30s ipv6=off;
 
       server {
-        listen 81;
-        proxy_pass $lb:30002;
+        listen 80;
+        location / {
+          proxy_pass https://$lb:20000;
+          proxy_set_header Host $host;
+        }
       }
     }
 ---
@@ -104,7 +95,7 @@ spec:
     metadata:
       labels:
         app: nginx-proxy
-        version: v3
+        version: v1
     spec:
       containers:
       - name: nginx
@@ -130,11 +121,8 @@ spec:
   type: ClusterIP
   #externalTrafficPolicy: Local
   ports:
-  - name: proxy01
+  - name: proxy
     port: 80
-    protocol: TCP
-  - name: proxy02
-    port: 81
     protocol: TCP
   selector:
     app: nginx-proxy
