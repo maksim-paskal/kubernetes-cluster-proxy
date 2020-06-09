@@ -9,7 +9,7 @@ mkdir ssl/db/newcerts
 touch ssl/db/index.txt
 echo "01" > ssl/db/serial
 
-openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout ssl/server.key -out ssl/server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=*.golbal"
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout ssl/server.key -out ssl/server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=*.global"
 
 openssl req -new -newkey rsa:2048 -nodes -keyout ssl/ca.key -x509 -days 3650 \
 -subj "/C=GB/ST=London/L=London/O=EXAMPLE/OU=CRM/CN=cluster.global/emailAddress=crm@cluster.global" \
