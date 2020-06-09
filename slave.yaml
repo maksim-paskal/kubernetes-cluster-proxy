@@ -9,58 +9,6 @@ kind: ConfigMap
 metadata:
   name: nginx-config
 data:
-  client01.crt: |
-    -----BEGIN CERTIFICATE-----
-    MIIDjTCCAnUCAQEwDQYJKoZIhvcNAQEFBQAwgYsxCzAJBgNVBAYTAkdCMQ8wDQYD
-    VQQIDAZMb25kb24xDzANBgNVBAcMBkxvbmRvbjEQMA4GA1UECgwHRVhBTVBMRTEM
-    MAoGA1UECwwDQ1JNMRcwFQYDVQQDDA5jbHVzdGVyLmdsb2JhbDEhMB8GCSqGSIb3
-    DQEJARYSY3JtQGNsdXN0ZXIuZ2xvYmFsMB4XDTIwMDYwMzE0MjQxMFoXDTMwMDYw
-    MTE0MjQxMFowgYwxCzAJBgNVBAYTAkdCMQ8wDQYDVQQIDAZMb25kb24xDzANBgNV
-    BAcMBkxvbmRvbjEQMA4GA1UECgwHRVhBTVBMRTEMMAoGA1UECwwDQ1JNMRcwFQYD
-    VQQDDA5jbHVzdGVyLmdsb2JhbDEiMCAGCSqGSIb3DQEJARYTdXNlckBjbHVzdGVy
-    Lmdsb2JhbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKOtfzE7NlNN
-    ZMHKKRAIFYt4kfV/jGPPgdjjMdTnITHulwcxKl+fh/cvCC+/oLCtG3RZ9JiaaJmE
-    OzED4CDKBHyTNwJpgNvbclsJdf7OW5kiXk4e9C+ivw4J58k/oM/ZnMx6Y1+8zq3J
-    ECUGaCpYRVqCxYWqHapH2jv6m4w/+7ziA4oIZLRtwQZHBAOo/NsaEyu9eeAWBUa/
-    aptkf70j7wM2n3f9MF/BqpKWFqRGPtk61YzS4h81ozcMA51K5mUAIc7XPhDsgIa5
-    3GXTsbhD9lntDcTTGvvtmbOrAibr0TSP90+ZLEOnyU7YDUpFWurQy1uwdmKgOK81
-    HsmccoYuxccCAwEAATANBgkqhkiG9w0BAQUFAAOCAQEAijHUmDfaTSRKnx8poF83
-    dUIVJSr1RBItR5mGrIP4X8PS8r08tohmAtLnj5MQO/gpSNEXQc+VR9vHE6q8CRu7
-    Uf4cIXPUF8wUHiu/OIT/IcvQoqo4+NGfWNIbBqDe8RqNvWT5MvKlBHZ2MLgK2s2/
-    ++chcShY+PIxSIYbzCZDM5TdsPTMtHffgJck1cms8fUZ3X++y0b00epeRDPuO+7s
-    tN0wx7CekMhKjRRh3UEEJNb9feJpLJ3O6boHfudFirGMiGeXASB6eV0CCkIQ7UzV
-    rwduLD4RvJAOtz2qthTgeM6X9ofiw0y4kTLuf4JFMdw4R7igrpbW4MZbcHDvqFck
-    KA==
-    -----END CERTIFICATE-----
-  client01.key: |
-    -----BEGIN PRIVATE KEY-----
-    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCjrX8xOzZTTWTB
-    yikQCBWLeJH1f4xjz4HY4zHU5yEx7pcHMSpfn4f3Lwgvv6CwrRt0WfSYmmiZhDsx
-    A+AgygR8kzcCaYDb23JbCXX+zluZIl5OHvQvor8OCefJP6DP2ZzMemNfvM6tyRAl
-    BmgqWEVagsWFqh2qR9o7+puMP/u84gOKCGS0bcEGRwQDqPzbGhMrvXngFgVGv2qb
-    ZH+9I+8DNp93/TBfwaqSlhakRj7ZOtWM0uIfNaM3DAOdSuZlACHO1z4Q7ICGudxl
-    07G4Q/ZZ7Q3E0xr77ZmzqwIm69E0j/dPmSxDp8lO2A1KRVrq0MtbsHZioDivNR7J
-    nHKGLsXHAgMBAAECggEAbbwKBFWwbFT88je5I/hniWRCZxcmZlxer6xSYmy7AqD1
-    PGsn/4gTPhOYJ3sQHqNQPsd4hz8uVY4jqQ7yGsmWDHcecE2PiNctaf+DzltHafly
-    xGlYSP+Rm7XkYjZ4eCFrUGPVcABDiJu+aTRMbedUSARYrO6KiPk3RPMVigfznIPQ
-    ZGENgC4SlfhwAgF0n4PyptWOZYF6ZcQzG03vMbxHrKjcmiCt6voAs54LK6n/Fg0/
-    7XGpl1uNzSK3iKu2XT4M0BtgSJOdGsCxlsGvxlBB1I8uaKKBe0Pf9ThKwkKBlLJH
-    03OjmAWUblzjwVG935/tDH4vnJhmm7uodoprTFF5UQKBgQDN7xcJmfa3PtKyXPMl
-    HtSfokKE9UTWL5GVWEOzboSCJ01hD/a9KJa2qz5/WXtGLekjHQMc86jH0jDndWrq
-    IKjhWyyqfWJ2k8o0ekRdtztsjjHTkPRiKdK43jqlzWbPR6uTDFbzmKY37D8ccqSa
-    D5vRxFfzWsNphSQ1qtQsrH3i+wKBgQDLeHcnYZKgpb+hikTdhW4Saw29WcCaQ/3+
-    SGyPwtzB3FDaXIcwk0KcGifVUlZJpOWARHovpbYZ4kKYLg4ozF99bg9q2aGdQuYT
-    Ssdr6mFR6n0ivCfXrbqPlYuU7rDtg6sXhODtGgbp9VJTAQ54EKXUCCYuz74e1Wgz
-    UvJaHDlOpQKBgHlOhqaMQE2vPxP8Nuo94Afs3/xMMnFs8fgkVzUCPCIjHqy3Z6QD
-    ncwa0aTYxAoSD0w00dmjGmAiy9X8T698755YQ9ZmJ7Mr2afSAiWmQuXuWSGEOMD+
-    W/e0SJ3UgeRGFqZ3VV0HJZq5mm+ahKWP3jzRyPE8HPIykKLgbz2lmj4zAoGBAIbk
-    PlplXYgTWpAF0tHpe6fKQTmfHwkmumSyLwa/8Qq0vQWHAjk555cF4BKUm5AHOf9n
-    ZnngKnHOhsfNAKYbl9LX/HCiB3rytwVjNgJdSFe+VWeJxgA+tMgsJHWAKNvNxse4
-    2EVYU+0XLpTIxobiwo1nOakfILPgV0xvWSxUOcnhAoGBAImT4K0bKSiOa3bYy2NB
-    wq1f3eAwRpqtgJoU89MIzYdc0CeFEBo2ByJFV/cIvoNoWW4ExRDSqovDJlgY1xLW
-    B0OyLonJ7m+KDV+PBwKK8q8osITjkIkLxAY7fFTgvNT0H/WlcL1AXyl2b18SIU22
-    /MbtgyFyo64it214709QZ2e2
-    -----END PRIVATE KEY-----
   nginx.conf: |
     user nginx;
     worker_processes  auto;
@@ -71,8 +19,8 @@ data:
     error_log /var/log/nginx/error.log error;
 
     http {
-      proxy_ssl_certificate         /etc/nginx/client01.crt;
-      proxy_ssl_certificate_key     /etc/nginx/client01.key;
+      proxy_ssl_certificate         /ssl/client01.crt;
+      proxy_ssl_certificate_key     /ssl/client01.key;
 
       map $remote_addr $lb { 
         default aba859c73ec444e97876b7f7b9af975a-2ed373467ecf9fca.elb.us-east-1.amazonaws.com;
@@ -106,15 +54,21 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.17.2
+        image: nginx:1.17
         volumeMounts:
         - mountPath: /etc/nginx
           readOnly: true
           name: nginx-config
+        - mountPath: /ssl
+          readOnly: true
+          name: nginx-certs
       volumes:
       - name: nginx-config
         configMap:
           name: nginx-config
+      - name: nginx-certs
+        configMap:
+          name: nginx-certs
 ---
 apiVersion: v1
 kind: Service
