@@ -13,6 +13,7 @@ data:
     error_log /var/log/nginx/error.log error;
 
     http {
+      server_tokens off;
       ssl_protocols TLSv1.2;
       ssl_certificate /ssl/server.crt;
       ssl_certificate_key /ssl/server.key;
@@ -33,7 +34,7 @@ data:
       resolver 169.254.20.10 valid=30s ipv6=on;
 
       server {
-        listen 20000 ssl;
+        listen 20000 ssl http2;
         
         location / {
           proxy_pass $web_proxy_shema://$web_proxy_host:$web_proxy_port;
@@ -62,7 +63,7 @@ spec:
     metadata:
       labels:
         app: nginx-proxy
-        version: v4
+        version: v1
     spec:
       containers:
       - name: nginx
