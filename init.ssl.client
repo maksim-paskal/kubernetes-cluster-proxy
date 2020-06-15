@@ -1,0 +1,10 @@
+#!/bin/sh
+set -ex
+
+openssl req -new -newkey rsa:2048 -nodes -keyout ssl/client02.key \
+-subj "/C=GB/ST=London/L=London/O=GLOBAL/OU=CLIENT/CN=*.global/emailAddress=client@cluster.global" \
+-out ssl/client02.csr
+
+openssl x509 -req -days 3650 -in ssl/client02.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 01 -out ssl/client02.crt
+
+openssl verify -verbose -CAfile ssl/ca.crt ssl/client02.crt
