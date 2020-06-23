@@ -1,9 +1,10 @@
 {{- range $idx, $val := .Values.clusters }}
+{{ $id := add $idx 1 | printf "%03d" }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cluster{{ $idx | printf "%03d" }}-config
+  name: cluster{{ $id }}-config
 data:
   nginx.conf: |
     user nginx;
@@ -36,16 +37,16 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cluster{{ $idx | printf "%03d" }}
+  name: cluster{{ $id }}
 spec:
   selector:
     matchLabels:
-      app: cluster{{ $idx | printf "%03d" }}
+      app: cluster{{ $id }}
   replicas: 1
   template:
     metadata:
       labels:
-        app: cluster{{ $idx | printf "%03d" }}
+        app: cluster{{ $id }}
         component: client
         version: {{ $.Values.version | quote }}
     spec:
@@ -62,7 +63,7 @@ spec:
       volumes:
       - name: nginx-config
         configMap:
-          name: cluster{{ $idx | printf "%03d" }}-config
+          name: cluster{{ $id }}-config
       - name: nginx-certs
         configMap:
           name: cluster-certs
@@ -70,9 +71,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cluster{{ $idx | printf "%03d" }}
+  name: cluster{{ $id }}
   labels:
-    app: cluster{{ $idx | printf "%03d" }}
+    app: cluster{{ $id }}
 spec:
   type: ClusterIP
   ports:
@@ -80,5 +81,5 @@ spec:
     port: 80
     protocol: TCP
   selector:
-    app: cluster{{ $idx | printf "%03d" }}
-{{- end}}
+    app: cluster{{ $id }}
+{{- end }}
