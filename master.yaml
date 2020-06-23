@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-config
+  name: master-config
 data:
   nginx.conf: |
     user nginx;
@@ -22,16 +22,16 @@ data:
       ssl_verify_client on;
 
       map $host $web_proxy_host {
-        "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster.*)" $x_proxy_host;
+        "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster[0-9]+)$" $x_proxy_host;
       }
       map $host $web_proxy_port {
-        "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster.*)" $x_port;
+        "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster[0-9]+)$" $x_port;
       }
       map $host $web_proxy_shema {
-        "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster.*)" $x_shema;
+        "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster[0-9]+)$" $x_shema;
       }
       
-      resolver 169.254.20.10 valid=30s ipv6=on;
+      resolver 169.254.20.10 valid=30s ipv6=off;
 
       server {
         listen 20000 ssl http2;
@@ -53,17 +53,17 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-proxy
+  name: master-proxy
 spec:
   selector:
     matchLabels:
-      app: nginx-proxy
+      app: master-proxy
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx-proxy
-        version: v1
+        app: master-proxy
+        component: master
     spec:
       containers:
       - name: nginx
@@ -78,17 +78,17 @@ spec:
       volumes:
       - name: nginx-config
         configMap:
-          name: nginx-config
+          name: master-config
       - name: nginx-certs
         configMap:
-          name: nginx-certs
+          name: master-certs
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-proxy
+  name: master-proxy
   labels:
-    app: nginx-proxy
+    app: master-proxy
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
 spec:
@@ -99,4 +99,19 @@ spec:
     port: 20000
     protocol: TCP
   selector:
-    app: nginx-proxy
+    app: master-proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-global
+  labels:
+    component: client
+spec:
+  type: ClusterIP
+  ports:
+  - name: proxy
+    port: 80
+    protocol: TCP
+  selector:
+    component: client

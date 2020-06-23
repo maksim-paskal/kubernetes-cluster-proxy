@@ -1,13 +1,7 @@
-#
-# EDITOR=nano kubectl -n kube-system edit cm coredns
-# rewrite stop name regex .*\.global nginx-proxy.default.svc.cluster.local
-# 
-# test
-# curl https443.kubernetes.default.svc.cluster.local.global
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-config
+  name: cluster001-config
 data:
   nginx.conf: |
     user nginx;
@@ -23,7 +17,7 @@ data:
       proxy_ssl_certificate_key     /ssl/client01.key;
 
       map $remote_addr $lb { 
-        default aba859c73ec444e97876b7f7b9af975a-2ed373467ecf9fca.elb.us-east-1.amazonaws.com;
+        default a0425c88e268d40dcbb4ceed2fc68fe6-0eca076372fcb6e8.elb.us-east-1.amazonaws.com;
       }
 
       resolver 169.254.20.10 valid=30s ipv6=off;
@@ -40,17 +34,17 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-proxy
+  name: cluster001
 spec:
   selector:
     matchLabels:
-      app: nginx-proxy
+      app: cluster001
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx-proxy
-        version: v1
+        app: cluster001
+        component: client
     spec:
       containers:
       - name: nginx
@@ -65,19 +59,17 @@ spec:
       volumes:
       - name: nginx-config
         configMap:
-          name: nginx-config
+          name: cluster001-config
       - name: nginx-certs
         configMap:
-          name: nginx-certs
+          name: cluster001-certs
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-proxy
+  name: cluster001
   labels:
-    app: nginx-proxy
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    app: cluster001
 spec:
   type: ClusterIP
   ports:
@@ -85,4 +77,4 @@ spec:
     port: 80
     protocol: TCP
   selector:
-    app: nginx-proxy
+    app: cluster001
