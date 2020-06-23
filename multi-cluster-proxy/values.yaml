@@ -1,0 +1,5 @@
+version: v1
+dns: 169.254.20.10
+clusters:
+- ae722a20e3d744978a5fdf1dbbf20ef1-5603677ec230215e.elb.us-east-1.amazonaws.com
+- a9dff3cff47a1448786f90b5b5888095-a0eaab6bc6b6b82a.elb.eu-central-1.amazonaws.com

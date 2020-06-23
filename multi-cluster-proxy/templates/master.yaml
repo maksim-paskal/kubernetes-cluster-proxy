@@ -31,7 +31,7 @@ data:
         "~^(?<x_shema>http|https)(?<x_port>[0-9]+).(?<x_proxy_host>.*).(global|cluster[0-9]+)$" $x_shema;
       }
       
-      resolver 169.254.20.10 valid=30s ipv6=off;
+      resolver {{ .Values.dns }} valid=30s ipv6=off;
 
       server {
         listen 20000 ssl http2;
@@ -64,6 +64,7 @@ spec:
       labels:
         app: master-proxy
         component: master
+        version: {{ $.Values.version | quote }}
     spec:
       containers:
       - name: nginx

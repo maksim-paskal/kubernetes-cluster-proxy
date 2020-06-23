@@ -1,7 +1,9 @@
+{{- range $idx, $val := .Values.clusters }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cluster001-config
+  name: cluster{{ $idx | printf "%03d" }}-config
 data:
   nginx.conf: |
     user nginx;
@@ -17,10 +19,10 @@ data:
       proxy_ssl_certificate_key     /ssl/client01.key;
 
       map $remote_addr $lb { 
-        default a0425c88e268d40dcbb4ceed2fc68fe6-0eca076372fcb6e8.elb.us-east-1.amazonaws.com;
+        default {{ . }};
       }
 
-      resolver 169.254.20.10 valid=30s ipv6=off;
+      resolver {{ $.Values.dns }} valid=30s ipv6=off;
 
       server {
         listen 80;
@@ -34,17 +36,18 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cluster001
+  name: cluster{{ $idx | printf "%03d" }}
 spec:
   selector:
     matchLabels:
-      app: cluster001
+      app: cluster{{ $idx | printf "%03d" }}
   replicas: 1
   template:
     metadata:
       labels:
-        app: cluster001
+        app: cluster{{ $idx | printf "%03d" }}
         component: client
+        version: {{ $.Values.version | quote }}
     spec:
       containers:
       - name: nginx
@@ -59,17 +62,17 @@ spec:
       volumes:
       - name: nginx-config
         configMap:
-          name: cluster001-config
+          name: cluster{{ $idx | printf "%03d" }}-config
       - name: nginx-certs
         configMap:
-          name: cluster001-certs
+          name: cluster-certs
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: cluster001
+  name: cluster{{ $idx | printf "%03d" }}
   labels:
-    app: cluster001
+    app: cluster{{ $idx | printf "%03d" }}
 spec:
   type: ClusterIP
   ports:
@@ -77,4 +80,5 @@ spec:
     port: 80
     protocol: TCP
   selector:
-    app: cluster001
+    app: cluster{{ $idx | printf "%03d" }}
+{{- end}}
