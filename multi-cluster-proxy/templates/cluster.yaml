@@ -18,7 +18,8 @@ data:
     http {
       proxy_ssl_certificate         /ssl/client01.crt;
       proxy_ssl_certificate_key     /ssl/client01.key;
-
+      proxy_ssl_protocols TLSv1.3;
+      
       map $remote_addr $lb { 
         default {{ . }};
       }
