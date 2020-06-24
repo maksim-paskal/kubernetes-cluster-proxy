@@ -16,10 +16,13 @@ data:
     error_log /var/log/nginx/error.log error;
 
     http {
+      server_tokens off;
+      add_header X-Cluster "{{ $id }}" always;
+
       proxy_ssl_certificate         /ssl/client01.crt;
       proxy_ssl_certificate_key     /ssl/client01.key;
       proxy_ssl_protocols TLSv1.3;
-      
+
       map $remote_addr $lb { 
         default {{ . }};
       }
