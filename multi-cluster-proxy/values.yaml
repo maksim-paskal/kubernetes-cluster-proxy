@@ -3,3 +3,14 @@ dns: 169.254.20.10
 clusters:
 - a20813278f7f84246ba868bc29a9c3c3-b6900cc85396ea93.elb.us-east-1.amazonaws.com
 - a0f33e5adaddb4533b2c99a8d62a8bfd-0e02c4729a844d5d.elb.eu-central-1.amazonaws.com
+
+master:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 50Mi
+cluster:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 50Mi

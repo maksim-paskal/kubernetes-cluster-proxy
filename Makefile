@@ -19,10 +19,6 @@ deploy:
 	# get external urls
 	@echo cluster001 `kubectl --kubeconfig=${HOME}/.kube/dev get svc master-proxy --template="{{range .status.loadBalancer.ingress}}{{.hostname}}{{end}}"`
 	@echo cluster002 `kubectl --kubeconfig=${HOME}/.kube/dev-slave-01 get svc master-proxy --template="{{range .status.loadBalancer.ingress}}{{.hostname}}{{end}}"`
-	
-	# coredns
-	kubectl --kubeconfig=${HOME}/.kube/dev-slave-01 apply -f coredns/corefile.yaml
-	kubectl --kubeconfig=${HOME}/.kube/dev-slave-01 -n kube-system delete pod -lk8s-app=kube-dns
 
 	# test
 	# apt update && apt install -y dnsutils curl
